@@ -1,0 +1,13 @@
+import styles from "../section.module.css";
+
+export default function SkillsPage() {
+  return (
+    <section className={styles.section}>
+      <header className={styles.head}>
+        <span className={styles.tag}>SEC-03</span>
+        <h1>Skills</h1>
+      </header>
+      <p className={styles.wip}>Em construção.</p>
+    </section>
+  );
+}

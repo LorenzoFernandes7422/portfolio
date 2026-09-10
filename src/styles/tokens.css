@@ -1,0 +1,28 @@
+:root {
+  /* ---- cores ---- */
+  --bg: #0a0b0d;              /* fundo quase-preto */
+  --bg-panel: #101216;        /* fundo de sidebar / barras */
+  --line: rgba(255, 255, 255, 0.12);        /* borda fina padrão */
+  --line-strong: rgba(255, 255, 255, 0.28); /* borda de destaque */
+  --text: #e8e6e1;            /* texto normal (branco-gelo) */
+  --text-dim: #8b8f96;        /* texto secundário / metadados */
+  --accent: #f0a020;          /* âmbar "Bridges" */
+  --accent-dim: rgba(240, 160, 32, 0.14);   /* âmbar de fundo (selecionado) */
+  --blue: #7fb8d8;            /* azul pálido secundário */
+
+  /* ---- medidas ---- */
+  --sidebar-w: 240px;
+  --statusbar-h: 32px;
+  --gap: 24px;
+  --radius: 2px;
+
+  /* ---- fontes ---- */
+  /* --font-rajdhani e --font-jetbrains são criadas pelo layout.tsx (next/font).
+     Aqui só damos um "apelido" mais fácil de usar + uma pilha de reserva. */
+  --font-title: var(--font-rajdhani), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* ---- animação ---- */
+  --t-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

@@ -1,0 +1,27 @@
+/* Estilo compartilhado pelas páginas de seção enquanto elas são só rascunho. */
+
+.section {
+  padding: var(--gap);
+  max-width: 900px;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.wip {
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}

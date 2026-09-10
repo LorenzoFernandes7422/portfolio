@@ -1,0 +1,52 @@
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 24px 0;
+  border-right: 1px solid var(--line);
+  background: var(--bg-panel);
+}
+
+.brand {
+  font-family: var(--font-title);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  padding: 0 20px 20px;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 10px 20px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color var(--t-slow) var(--ease),
+    background var(--t-slow) var(--ease);
+}
+
+.link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* estado ativo: o item da seção em que você está agora */
+.linkActive {
+  color: var(--text);
+  background: var(--accent-dim);
+}
+
+/* a barrinha âmbar na lateral esquerda do item ativo */
+.linkActive::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+}

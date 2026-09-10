@@ -1,0 +1,28 @@
+.bar {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-panel);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.chip {
+  color: var(--accent);
+}
+
+/* margin-left: auto empurra este item (e o que vem depois) pra direita da barra. */
+.clock {
+  margin-left: auto;
+  color: var(--text);
+}
+
+.id {
+  color: var(--text-dim);
+}
