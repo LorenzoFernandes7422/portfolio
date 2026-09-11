@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.link {
+  display: inline-flex;
+  color: var(--text-dim);
+  transition: color var(--t-slow) var(--ease);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+/* o SVG herda a cor do <a> via currentColor -> hover pinta o ícone */
+.link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}

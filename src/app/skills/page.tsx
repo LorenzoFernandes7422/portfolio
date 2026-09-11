@@ -7,7 +7,7 @@ export default function SkillsPage() {
         <span className={styles.tag}>SEC-03</span>
         <h1>Skills</h1>
       </header>
-      <p className={styles.wip}>Em construção.</p>
+      <p className={styles.wip}>Under construction.</p>
     </section>
   );
 }

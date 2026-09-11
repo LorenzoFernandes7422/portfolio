@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "P0R7F0L10-MK1",
-  description: "Arquivo pessoal de Lorenzo Ribeiro Fernandes — desenvolvedor.",
+  description: "Personal archive of Lorenzo Ribeiro Fernandes — Full Stack Web Developer.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

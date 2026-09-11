@@ -13,8 +13,9 @@
   /* ---- medidas ---- */
   --sidebar-w: 240px;
   --statusbar-h: 32px;
-  --gap: 24px;
+  --gap: 32px;         /* era 24px — DS2 respira mais */
   --radius: 2px;
+  --corner: 18px;       /* tamanho da moldura de canto */
 
   /* ---- fontes ---- */
   /* --font-rajdhani e --font-jetbrains são criadas pelo layout.tsx (next/font).

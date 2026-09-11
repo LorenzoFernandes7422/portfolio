@@ -22,7 +22,6 @@ export default function StatusBar() {
   return (
     <footer className={styles.bar}>
       <span className={styles.chip}>[ ARCHIVE ]</span>
-      <span>VITÓRIA DA CONQUISTA/BA</span>
       <span className={styles.clock}>{clock}</span>
       <span className={styles.id}>P0R7F0L10-MK1</span>
     </footer>

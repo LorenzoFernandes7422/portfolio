@@ -6,10 +6,10 @@ import styles from "./Sidebar.module.css";
 
 const SECTIONS = [
   { label: "Home", href: "/" },
-  { label: "Sobre", href: "/sobre" },
+  { label: "About", href: "/about" },
   { label: "Skills", href: "/skills" },
-  { label: "Certificados", href: "/certificados" },
-  { label: "Projetos", href: "/projetos" },
+  { label: "Certificates", href: "/certificates" },
+  { label: "Projects", href: "/projects" },
 ];
 
 export default function Sidebar() {

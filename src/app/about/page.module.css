@@ -1,0 +1,172 @@
+.section {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* sem max-width/margin nesta seção: o hero usa a largura toda do conteúdo. */
+}
+
+/* --- bloco cinematográfico: texto à esquerda, foto à direita --- */
+
+.hero {
+  position: relative; /* âncora pro .photo absoluto */
+  width: 100%;
+  height: min(85vh, 850px); /* sem a faixa embaixo, a foto pode descer mais */
+  overflow: hidden;
+  display: flex;
+  align-items: stretch; /* coluna de texto ocupa a altura toda do hero */
+}
+
+/* coluna de texto (esquerda) */
+.text {
+  position: relative;
+  z-index: 1; /* fica por cima da foto onde as duas se sobrepõem */
+  width: 46%;
+  padding: 56px 32px 56px 40px; /* mais respiro em cima e embaixo */
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* nome -> texto -> texto */
+}
+
+.name {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: clamp(28px, 3vw, 44px); /* cresce com a tela, entre 28 e 44px */
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.blurb {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 600px;
+  text-align: justify; /* alinha as duas margens, bloco reto */
+  hyphens: auto;       /* deixa quebrar palavra com hífen -> menos buraco entre palavras */
+}
+
+/* bloco de um idioma: etiqueta + parágrafos */
+.lang {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.langTag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+}
+
+/* idioma secundário (PT): mesmo texto, tom apagado */
+.langAlt .blurb {
+  color: var(--text-dim);
+}
+
+/* links dentro do texto: âmbar = interativo (regra dos tokens) */
+.blurb a {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  transition: background var(--t-slow) var(--ease);
+}
+
+.blurb a:hover {
+  background: var(--accent-dim); /* fundo âmbar translúcido no hover */
+}
+
+/* bloco da foto (direita) */
+.photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%; /* sobrepõe um pouco a coluna de texto (46% + 60% > 100%) — a sobra é a zona de mescla */
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(0.25) contrast(1.05);
+}
+
+/* overlay de degradês por cima da foto, uma camada por borda.
+   Todas terminam em var(--bg) -> emenda invisível com o fundo do site. */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* não bloqueia clique/seleção */
+  background:
+    linear-gradient(to right, var(--bg) 0%, transparent 38%),            /* esquerda: mescla com o texto */
+    linear-gradient(to bottom, var(--bg) 0%, transparent 14%),           /* topo */
+    linear-gradient(to top, var(--bg) 0%, transparent 22%),              /* rodapé */
+    linear-gradient(to left, var(--bg) 0%, transparent 24%);              /* direita: até a cor do fundo, some a borda */
+}
+
+/* --- faixa de metadado (estilo HUD, compacta) --- */
+
+.metaStrip {
+  display: grid;
+  grid-template-columns: repeat(3, max-content); /* Role | Active since | Links — uma linha só */
+  align-self: flex-start; /* não estica pra largura da coluna — só abraça o conteúdo */
+  margin-top: auto; /* engole o espaço que sobrar acima -> faixa vai pro rodapé da coluna */
+  gap: 20px 32px; /* linha / coluna */
+  padding: 16px 24px;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaItem dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.metaItem dd {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  margin: 0;
+}
+
+/* celular: empilha — texto em cima, foto embaixo */
+@media (max-width: 720px) {
+  .hero {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .text {
+    width: 100%;
+    padding: 24px 16px;
+  }
+
+  .photo {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+  }
+
+  .photo::after {
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, transparent 18%),
+      linear-gradient(to top, var(--bg) 0%, transparent 18%);
+  }
+
+  .metaStrip {
+    grid-template-columns: 1fr; /* celular: 1 por linha */
+  }
+}
