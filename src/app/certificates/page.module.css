@@ -1,0 +1,192 @@
+.section {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+/* contagem à direita do header: "02 RECORDS" */
+.stat {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+/* --- lista de registros, um por linha, largura total --- */
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* um registro = thumb à esquerda | corpo à direita. Usa junto com `corner-frame`. */
+.record {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+}
+
+/* em andamento: borda tracejada + tudo mais apagado */
+.recordPending {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: transparent;
+}
+
+.recordPending .body {
+  opacity: 0.7;
+}
+
+/* thumbnail: caixa 4:3, imagem cobre, um pouco dessaturada */
+.thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.thumbImg {
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(0.4) contrast(1.05);
+  transition: filter var(--t-slow) var(--ease);
+}
+
+.record:hover .thumbImg {
+  filter: none;
+}
+
+/* corpo do registro */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0; /* deixa o texto quebrar dentro do grid */
+}
+
+.recordId {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+}
+
+.title {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+/* emissor · data · horas */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.meta span + span::before {
+  content: "·";
+  margin-right: 14px;
+}
+
+/* etiqueta de status (só aparece no em andamento) */
+.status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* EN / PT, mesmo padrão da Home */
+.line {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.lineAlt {
+  color: var(--text-dim);
+}
+
+.langTag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  margin-right: 10px;
+}
+
+/* ações: VIEW / VERIFY */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto; /* gruda no rodapé do corpo */
+  padding-top: 6px;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  transition:
+    color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease),
+    background var(--t-slow) var(--ease);
+}
+
+.btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* código de verificação — texto puro, alinhado com os botões na mesma linha */
+.code {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .record {
+    grid-template-columns: 1fr; /* celular: thumb em cima, corpo embaixo */
+  }
+}
