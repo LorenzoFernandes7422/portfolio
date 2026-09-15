@@ -8,7 +8,7 @@
   --text-dim: #8b8f96;        /* texto secundário / metadados */
   --accent: #f0a020;          /* âmbar "Bridges" */
   --accent-dim: rgba(240, 160, 32, 0.14);   /* âmbar de fundo (selecionado) */
-  --blue: #7fb8d8;            /* azul pálido secundário */
+  --signal: #3fae7c ;            /* verde-esmeralda secundário */
 
   /* ---- medidas ---- */
   --sidebar-w: 240px;

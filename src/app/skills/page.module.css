@@ -6,6 +6,7 @@
 }
 
 .head {
+  position: relative; /* âncora do painel da escala (absoluto) */
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -113,8 +114,100 @@
 }
 
 .segOn {
-  background: var(--blue); /* aceso: o azul "quiral" do DS2 */
+  background: var(--signal);
   opacity: 1;
+}
+
+/* --- escala de níveis: botão (!) + painel recolhível (<details>) --- */
+
+.scale {
+  display: inline-flex; /* o <details> fica inline, ao lado do h1 */
+}
+
+/* o <summary> = o botão (!) */
+.infoBtn {
+  list-style: none; /* tira o ▸ padrão do summary */
+  cursor: pointer;
+  user-select: none;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  transition:
+    color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease);
+}
+
+.infoBtn::-webkit-details-marker {
+  display: none; /* Safari/Chrome antigos ainda usam este marcador */
+}
+
+/* hover, e também enquanto o painel está aberto: âmbar = interativo */
+.infoBtn:hover,
+.scale[open] .infoBtn {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* o painel que desce abaixo do header, por cima da grade */
+.scalePanel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  z-index: 5;
+  width: min(560px, 100%);
+  padding: 20px 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* um nível = medidor + nome, depois EN, depois PT */
+.scaleItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scaleTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scaleLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.scaleLine {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.scaleLineAlt {
+  color: var(--text-dim); /* PT apagado, como na Home */
+}
+
+.scaleTag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  margin-right: 10px;
 }
 
 @media (max-width: 900px) {

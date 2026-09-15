@@ -1,7 +1,19 @@
 import styles from "./page.module.css";
-import { skills } from "../content/skills";
+import { skills, levels } from "../content/skills";
 
-const LEVEL_LABEL = ["", "familiar", "working", "solid", "primary"];
+// Medidor de 4 segmentos. Usado na linha da skill E no painel da escala.
+function Gauge({ level }: { level: number }) {
+  return (
+    <div className={styles.gauge}>
+      {[1, 2, 3, 4].map((n) => (
+        <span
+          key={n}
+          className={n <= level ? `${styles.seg} ${styles.segOn}` : styles.seg}
+        />
+      ))}
+    </div>
+  );
+}
 
 type SkillRowProps = {
   name: string;
@@ -13,17 +25,11 @@ function SkillRow({ name, level }: SkillRowProps) {
     <li className={styles.row}>
       <div className={styles.rowTop}>
         <span className={styles.skillName}>{name}</span>
-        <span className={styles.levelLabel}>{LEVEL_LABEL[level]}</span>
+        {/* níveis começam em 1, arrays em 0 -> level - 1 */}
+        <span className={styles.levelLabel}>{levels[level - 1].label}</span>
       </div>
 
-      <div className={styles.gauge}>
-        {[1, 2, 3, 4].map((n) => (
-          <span
-            key={n}
-            className={n <= level ? `${styles.seg} ${styles.segOn}` : styles.seg}
-          />
-        ))}
-      </div>
+      <Gauge level={level} />
     </li>
   );
 }
@@ -34,6 +40,32 @@ export default function SkillsPage() {
       <header className={styles.head}>
         <span className={styles.tag}>SEC-02</span>
         <h1>Skills</h1>
+
+        {/* botão (!) + painel da escala. <details> cuida do abre/fecha, sem JS. */}
+        <details className={styles.scale}>
+          <summary className={styles.infoBtn} aria-label="Level scale">
+            !
+          </summary>
+
+          <div className={`${styles.scalePanel} corner-frame`}>
+            {levels.map((lv) => (
+              <div key={lv.value} className={styles.scaleItem}>
+                <div className={styles.scaleTop}>
+                  <Gauge level={lv.value} />
+                  <span className={styles.scaleLabel}>{lv.label}</span>
+                </div>
+                <p className={styles.scaleLine}>
+                  <span className={styles.scaleTag}>EN</span>
+                  {lv.en}
+                </p>
+                <p className={`${styles.scaleLine} ${styles.scaleLineAlt}`}>
+                  <span className={styles.scaleTag}>PT</span>
+                  {lv.pt}
+                </p>
+              </div>
+            ))}
+          </div>
+        </details>
       </header>
 
       <div className={styles.grid}>
