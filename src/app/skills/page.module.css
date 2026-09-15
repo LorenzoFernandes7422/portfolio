@@ -134,7 +134,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line-strong);
+  border: 3px solid var(--line-strong);
   border-radius: 50%;
   font-family: var(--font-mono);
   font-size: 12px;
