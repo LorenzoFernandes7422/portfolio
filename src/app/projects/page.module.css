@@ -1,0 +1,154 @@
+.section {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.stat {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+/* --- grade responsiva: quantas colunas couberem, cada uma com no mínimo 280px --- */
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.cardPending {
+  border-style: dashed;
+  border-color: var(--line-strong);
+  background: transparent;
+}
+
+/* card sem foto ainda: mesma proporção da capa dos outros, pra grade ficar alinhada */
+.placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder .status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.body {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* pills de tecnologia */
+.stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+}
+
+.line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.lineAlt {
+  color: var(--text-dim);
+}
+
+.langTag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  margin-right: 8px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto; /* gruda no rodapé do card, igual fizemos no About */
+  padding-top: 4px;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  transition:
+    color var(--t-slow) var(--ease),
+    border-color var(--t-slow) var(--ease),
+    background var(--t-slow) var(--ease);
+}
+
+.btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  font-style: italic;
+}

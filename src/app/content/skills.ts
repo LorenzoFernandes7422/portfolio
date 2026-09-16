@@ -71,7 +71,7 @@ export const skills: SkillGroup[] = [
   },
 ];
 
-type LevelInfo = {
+export type LevelInfo = {
   value: Level;
   label: string;
   en: string;

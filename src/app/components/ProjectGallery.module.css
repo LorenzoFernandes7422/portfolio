@@ -1,0 +1,155 @@
+/* --- capa (o gatilho) --- */
+
+.trigger {
+  all: unset; /* zera a aparência padrão de <button> (borda, fundo, fonte...) */
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* proporção comum de print de tela — corta menos que 4:3 */
+  overflow: hidden;
+  background: var(--bg); /* preenche a sobra quando a imagem não bate com a caixa */
+}
+
+.cover {
+  object-fit: contain; /* mostra o print INTEIRO, sem cortar interface */
+  filter: grayscale(0.15) contrast(1.05);
+  transition: filter var(--t-slow) var(--ease);
+}
+
+.trigger:hover .cover {
+  filter: none;
+}
+
+/* --- o modal --- */
+
+.dialog {
+  /* centralização explícita — não confiar no "margin: auto" padrão do
+     navegador, que em alguns casos não centraliza como esperado */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: min(900px, 92vw);
+  max-height: 90vh;
+  overflow: visible; /* deixa as setas saírem um pouco da borda do viewer */
+}
+
+.dialog::backdrop {
+  background: rgba(10, 11, 13, 0.85);
+}
+
+.viewer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+}
+
+.viewerImage {
+  object-fit: contain; /* mostra a foto inteira, sem cortar (diferente da capa) */
+}
+
+/* --- setas de navegação --- */
+
+.nav {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px; /* sem caixa visível, mas a área de clique continua boa */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.85;
+  transition:
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease);
+}
+
+.nav:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* fora da imagem, na área escura do fundo — não em cima do print */
+.navPrev {
+  left: -64px;
+}
+
+.navNext {
+  right: -64px;
+}
+
+/* telas médias: menos sobra ao lado do dialog, encolhe o afastamento */
+@media (max-width: 1000px) {
+  .navPrev {
+    left: -24px;
+  }
+  .navNext {
+    right: -24px;
+  }
+}
+
+/* --- contador e fechar --- */
+
+.counter {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+.close {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  top: -34px;
+  right: -8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.85;
+  transition:
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-slow) var(--ease);
+}
+
+.close:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+@media (max-width: 640px) {
+  .navPrev {
+    left: 8px;
+  }
+  .navNext {
+    right: 8px;
+  }
+  .close {
+    top: 8px;
+    right: 8px;
+  }
+}
